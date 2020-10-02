@@ -4,6 +4,7 @@ namespace Album\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+use Zend\View\Model\JsonModel;
 
 class AlbumController extends AbstractActionController
 {
@@ -12,7 +13,7 @@ class AlbumController extends AbstractActionController
     public function indexAction()
     {
         $res = $this->getAlbumTable()->findAll();
-        return new ViewModel(array(
+        return new JsonModel(array(
             'albums' => $res,
         ));
     }
@@ -43,5 +44,4 @@ class AlbumController extends AbstractActionController
 
         return $this->albumTable;
     }
-
 }

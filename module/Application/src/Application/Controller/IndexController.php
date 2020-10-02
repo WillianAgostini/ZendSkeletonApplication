@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework (http://framework.zend.com/)
  *
@@ -11,6 +12,7 @@ namespace Application\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+use Zend\View\Model\JsonModel;
 
 class IndexController extends AbstractActionController
 {
@@ -18,6 +20,6 @@ class IndexController extends AbstractActionController
     {
         $em = $this->getServiceLocator()->get("Doctrine\ORM\EntityManager");
         $lista = $em->getRepository("Application\Model\Funcionario")->findAll();
-        return new ViewModel(array('lista' => $lista));
+        return new JsonModel(array('lista' => $lista));
     }
 }
